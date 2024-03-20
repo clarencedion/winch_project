@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard AMX1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link rel="icon" type="image/png" sizes="96x96" href="static\images\favicon.ico">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='sidebar.css') }}">
+</head>
+<body>
+<div id="dashboard-content">
+
+    <aside>
+        <img class="logo_amx" src="static\images\logo-amx.png" alt="Logo AMX">
+        <p> Menu </p>
+        <a id="dashboardButtonPage" href="/dashboard">
+            <i class="fa fa-user-o" aria-hidden="true"></i>
+            Dashboard
+          </a>
+          <a id="tasksButtonPage" href="/tasks">
+            <i class="fa fa-laptop" aria-hidden="true"></i>
+            Tasks
+          </a>
+          <a id="chatButtonPage" href="/editor">
+            <i class="fas fa-edit" aria-hidden="true"></i>
+            Editor
+          </a>
+      </aside>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <div class="popup-content">
+            <form action="/add" method="post" class="add-form">
+                <label class="form__label" for="name">Name:</label><br>
+                <input type="hidden" name="type" value="item">
+                <input class="form__input" required="required" type="text" id="name" name="name"><br>
+                <input type="submit" value="Add" id="add-btn" class="form_button">
+            </form>
+        </div>
+    </div>
+
+    <div class="scrollbox">
+        <div class="wrapper">
+        <div class="search-container">
+            <input type="text" id="searchInput" onkeyup="searchbar()" placeholder="Search for item...">
+        </div>
+        <button href="#" id="open-popup-btn" class="add-button" onclick="openPopup()">Ajouter un Client</button>
+        </div>
+        <div id="style-scroll" class="container">
+            {% for item in items %}
+            <div class="company">
+                <div class="drag-handle"><i class="fa-solid fa-grip"></i></div>
+                <div class="name">{{ item[1] }}</div>
+                <form class="duplicate-form" action="/duplicate" method="post">
+                    <input type="hidden" name="rowid" value="{{ item[0] }}">
+                    <button type="submit" class="delete-button" value="Duplicate">Duplicate</button>
+                </form>
+                <form class="delete-form" action="/delete" method="post">
+                    <input type="hidden" name="rowid" value="{{ item[0] }}">
+                    <button type="submit" class="delete-button" value="Delete"><i class="fa-solid fa-trash"></i></button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+    <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+    <script src="https://kit.fontawesome.com/3ed579e2ed.js" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='sidebar.js') }}"></script>
+    <script src="{{ url_for('static', filename='popup.js') }}"></script> 
+    <script src="{{ url_for('static', filename='searchbar.js') }}"></script>
+    <script src="{{ url_for('static', filename='sort.js') }}"></script>
+</body>
+</html>

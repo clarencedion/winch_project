@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link rel="icon" type="image/png" sizes="96x96" href="static\images\favicon.ico">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='sidebar.css') }}">
+    <script src="https://cdn.tiny.cloud/1/02k2xfgjo0krhj47bbyi2xigpoqiigm9no1bvje45ys7g6bv/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body>
+<div id="dashboard-content">
+
+    <aside>
+        <img class="logo_amx" src="static\images\logo-amx.png" alt="Logo AMX">
+        <p> Menu </p>
+        <a id="dashboardButtonPage" href="/dashboard">
+            <i class="fa fa-user-o" aria-hidden="true"></i>
+            Dashboard
+            </a>
+            <a id="tasksButtonPage" href="/tasks">
+            <i class="fa fa-laptop" aria-hidden="true"></i>
+            Tasks
+            </a>
+            <a id="chatButtonPage" href="/editor">
+                <i class="fas fa-edit" aria-hidden="true"></i>
+                Editor
+            </a>
+      </aside>
+
+    <div class="scrollbox">
+        <div class="wrapper">
+        <div class="search-container">
+        <div id="style-scroll-tiny" class="container-tiny">
+            <form id="uploadForm">
+                <label for="fileInput" class="custom-file-label" id="fileInputLabel">Choose a file...</label>
+                <input type="file" name="file" id="fileInput" class="custom-file-input" onchange="updateFileName()">
+                <button id="add-btn" class="form_button" type="submit">Upload Word</button>
+            </form> 
+        </div>
+        <textarea id="convertcontentcss" class="tiny-text">
+        </textarea>
+    </div>
+</div>
+    <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+    <script src="https://kit.fontawesome.com/3ed579e2ed.js" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='sidebar.js') }}"></script>
+    <script src="{{ url_for('static', filename='popup.js') }}"></script> 
+    <script src="{{ url_for('static', filename='searchbar.js') }}"></script>
+    <script src="{{ url_for('static', filename='sort.js') }}"></script>
+    <script src="{{ url_for('static', filename='convert.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            height: 700,
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [
+            { value: 'First.Name', title: 'First Name' },
+            { value: 'Email', title: 'Email' },
+            ],
+            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+        });
+        </script>
+        <script>
+        function removeElementWhenAvailable() {
+            var elementToRemove = document.querySelector('.tox-statusbar__branding');
+            if (elementToRemove) {
+                elementToRemove.remove();
+                console.log("Element removed successfully.");
+            }
+        }
+        var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'childList') {
+                    removeElementWhenAvailable();
+                }
+            });
+        });
+        var observerConfig = { childList: true, subtree: true };
+        observer.observe(document.body, observerConfig);
+        </script>
+        <script>
+            function updateFileName() {
+                const fileInput = document.getElementById('fileInput');
+                const fileLabel = document.getElementById('fileInputLabel');
+                if (fileInput.files.length > 0) {
+                    fileLabel.textContent = fileInput.files[0].name;
+                } else {
+                    fileLabel.textContent = 'Choose a file...';
+                }
+            }
+        </script>
+</body>
+</html>

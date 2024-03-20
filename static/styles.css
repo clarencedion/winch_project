@@ -1,0 +1,337 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F9F9FB;
+}
+
+.scrollbox {
+    position: relative;
+    width: 70%;
+    margin-left: 23%;
+    background: transparent;
+}
+
+.add-button {
+    box-sizing: border-box;
+    border-radius: 6px;
+    outline: rgb(255, 255, 255) none 0px;
+    font-size: 14px;
+    line-height: 18.9px;
+    margin-left: 80%;
+    overflow: visible;
+    appearance: button;
+    cursor: pointer;
+    background-color: rgb(86, 24, 189);
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    font-weight: 400;
+    padding: 11px 22px;
+    text-align: center;
+    transition: all 0.15s linear 0s;
+    user-select: none;
+    vertical-align: middle;
+    text-decoration: none solid rgb(255, 255, 255);
+    border: 1px solid rgb(108, 37, 227);
+}
+
+.add-button:hover {
+    transform: scale(1.1) rotate(-0deg);
+  }
+
+.container {
+    position: relative;
+    border-radius: 6px;
+    margin-top: 20px;
+    height: 670px;
+    overflow-y: scroll;
+}
+
+
+#style-scroll::-webkit-scrollbar-track{
+	background-color: var(--line-button);
+}
+
+#style-scroll::-webkit-scrollbar{
+    background-color: #0000;
+    width: 12px;
+    height: 16px;
+}
+
+#style-scroll::-webkit-scrollbar-button{
+    display: none;
+    }
+
+#style-scroll::-webkit-scrollbar-thumb{
+    background-color: #babac0;
+    border-radius: 16px;
+    border: 5px solid var(--line-button);
+}
+
+.company {
+    margin-bottom: 8px;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: rgba(87, 24, 189, 0.048);
+    border: 1px solid rgba(107, 37, 227, 0.521);
+}
+
+.color-box {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 6px;
+}
+
+.name {
+    flex: 1;
+    color: rgba(87, 24, 189);
+}
+
+.green {
+    background-color: rgb(0, 151, 0);
+}
+
+.red {
+    background-color: lightcoral;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    max-width: 400px;
+    width: 80%;
+    padding: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.popup-content {
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #aaa;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #555;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    display: none;
+}
+
+.popup.open,
+.overlay.open {
+    display: block;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+.form__input {
+    width: 80%;
+    padding: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 0.5px solid #ccc;
+    border-radius: 6px;
+  }
+
+
+.form__label {
+    font-weight: bold;
+  }
+
+  :root {
+    --bg: #1a1e24;
+    --color: #eee;
+}
+
+.wrapper {
+    padding: 1.5rem 0;
+    filter: url('#goo');
+}
+
+.form_button {
+    box-sizing: border-box;
+    border-radius: 6px;
+    outline: rgb(255, 255, 255) none 0px;
+    font-size: 14px;
+    line-height: 18.9px;
+    overflow: visible;
+    appearance: button;
+    cursor: pointer;
+    background-color: rgb(86, 24, 189);
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    font-weight: 400;
+    padding: 11px 22px;
+    text-align: center;
+    transition: all 0.15s linear 0s;
+    user-select: none;
+    vertical-align: middle;
+    text-decoration: none solid rgb(255, 255, 255);
+    border: 1px solid rgb(108, 37, 227);
+}
+
+.form_button:hover{
+    transform: scale(1.1) rotate(-0deg);
+}
+
+
+
+/* Searchbar */
+.search-container {
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    width: 20%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: rgb(86, 24, 189);
+}
+
+
+
+
+/* Individual Button Task */
+.indiv-login-button {
+  background-color: rgb(255, 255, 255);
+  margin-right: 20px;
+  border-radius: 6px;
+  color: rgb(86, 24, 189);
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 14px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.indiv-login-button:hover {
+  transform: scale(1.1) rotate(-0deg);
+}
+
+
+/* Individual Button Task */
+.delete-button {
+    background-color: rgb(255, 255, 255);
+    margin-right: 20px;
+    border-radius: 6px;
+    color: rgb(86, 24, 189);
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 14px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .delete-button:hover {
+    transform: scale(1.2) rotate(-0deg);
+  }
+
+
+  .loader {
+    border: 4px solid #ffffff;
+    border-top: 4px solid rgb(86, 24, 189);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 2s linear infinite;
+    display: none;
+    margin-right: 20px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .drag-handle {
+    color: #a0a0a0;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+
+#style-scroll-tiny {
+    margin-top: 15px;
+    margin-bottom: 35px;
+}
+
+/* Hide the default file input button */
+input[type="file"] {
+    display: none;
+  }
+  
+  /* Style the custom file input button */
+  .custom-file-input {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Style for the file input label */
+  .custom-file-label {
+    display: inline-block;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+  }
